@@ -1,0 +1,24 @@
+<h1>Comparas#show</h1>
+<p>Find me in app/views/comparas/show.html.erb</p>
+<%= link_to "Acasă", root_url %>
+<table border="1">
+	<tr><th></th><th><%= @var1.nume  %></th>
+							 <th><%= @var2.nume %></th></tr>
+	<tr><td>Salar mediu net</td><td><%= @var1.salar_mediu %> lei </td><td><%= @var2.salar_mediu %> lei </td></tr>
+	<tr><td>Bani tocați de primărie</td><td><%= @var1.buget %> Euro </td><td><%= @var2.buget %> Euro </td></tr>
+	<tr><td>Nr școli cu wc-eu în curte</td><td><%= @var1.nr_wc_scoli %></td><td><%= @var2.nr_wc_scoli %></td></tr>
+</table>
+
+<p>Mai fă o comparație(alege două primării)</p>
+<%= form_tag("/show", method: "get") do %>
+	
+	<% Primarii.all.each do |primarie| %>
+	<%= check_box_tag(primarie.nume) %>
+	<%= label_tag(primarie.nume, "#{primarie.nume}") %><br />
+	<% end %>
+
+  <%= submit_tag("Compara") %>
+<% end %>
+
+
+<%=  params.to_a[1][0] %>

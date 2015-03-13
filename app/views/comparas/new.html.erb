@@ -1,0 +1,14 @@
+<h1>Comparas#new</h1>
+<p>Find me in app/views/comparas/new.html.erb</p>
+<p>Compară următoarele primării(alege două):</p>
+
+
+<%= form_tag("/show", method: "get") do %>
+	
+	<% Primarii.all.each do |primarie| %>
+	<%= check_box_tag(primarie.nume) %>
+	<%= label_tag(primarie.nume, "#{primarie.nume}") %><br />
+	<% end %>
+
+  <%= submit_tag("Compara") %>
+<% end %>
